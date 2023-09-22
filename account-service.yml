@@ -43,7 +43,7 @@ server:
         defaultZone: http://localhost:8761/eureka/
 
 customProperty:
-   test: vamshi manohar
+   test: worked out
 management:
   endpoints:
    web:
