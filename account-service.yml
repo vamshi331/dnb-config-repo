@@ -16,7 +16,7 @@ spring:
   application:
     name: account-service
 server:
-  port: 0
+  port: 9000
   error:
     include-message: always
 eureka:
