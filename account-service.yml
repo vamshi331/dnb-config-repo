@@ -32,3 +32,6 @@ management:
         include: refresh,health
 customProperty:
   test: Captain
+
+api:
+  customer: http://localhost:9010/api/customer
