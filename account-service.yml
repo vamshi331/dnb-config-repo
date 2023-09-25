@@ -1,37 +1,37 @@
 spring:
   datasource:
-    username: newroot
-    password: root
-    url: jdbc:mysql://localhost:3306/account
+      username: newroot
+      password: root
+      url: jdbc:mysql://localhost:3306/accountdb
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
   jackson:
     serialization:
       fail-on-empty-beans: false
-  application:
-    name: account-service
 server:
-  port: 9000
+  port: 0
   error:
     include-message: always
 eureka:
   instance:
-    client:
-      serviceUrl:
-        defaultZone: http://localhost:8761/eureka/
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} 
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  client:
+#      serviceUrl:
+#        defaultZone: http://localhost:8761/eureka/ 
+customProperty:
+  test: fridayNight
 management:
   endpoints:
     web:
       exposure:
         include: refresh,health
-customProperty:
-  test: Captain
-
 api:
-  customer: http://localhost:9010/api/customer
+  customer: http://localhost:9001/api/customer
