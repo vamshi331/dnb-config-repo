@@ -1,33 +1,43 @@
 spring:
   application:
-      name: api-gateway-service
+    name: api-gateway-service
   cloud:
     gateway:
       routes:
-        - id: ACCOUNT-SERVICE
-          uri: lb://ACCOUNT-SERVICE
-          predicates:
-            - Path=/account/**
-        - id: CUSTOMER-SERVICE
-          uri: lb://CUSTOMER-SERVICE
-          predicates:
-            - Path=/customer/**
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path= /authenticate/**
+            - Path= /api/user/**
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path= /api/authenticate/**
+        - id: PROFILE-SERVICE
+          uri: lb://PROFILE-SERVICE
+          predicates:
+            - Path= /api/profile/**
+        - id: EDUCATION-SERVICE
+          uri: lb://EDUCATION-SERVICE
+          predicates:
+            - Path= /api/education/**
+        - id: EXPERIENCE-SERVICE
+          uri: lb://EXPERIENCE-SERVICE
+          predicates:
+            - Path= /api/experience/**
 server:
-   port: 9191
-   error:
-    include-message: always
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} 
-  client:
-      serviceUrl:
-        defaultZone: http://localhost:8761/eureka/ 
+  port: 9191
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 30
+jwt:
+  secret: mySecretKey
+  expireMs: 120000
+  refrEshexpireMs: 120000
