@@ -25,7 +25,7 @@ management:
         include: refresh,health
 jwt:
   secret: mySecretKey
-  expireMs: 120000
-  refrEshexpireMs: 120000
+  expireMs: 180000
+  refrEshexpireMs: 180000
 api:
   profile: http://PROFILE-SERVICE/api/profile
